@@ -1,9 +1,10 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('Installing prereqs') {
             steps {
-                echo 'Building..'
+                echo 'Installing flask..'
+                sh("pip install flask")
             }
         }
         stage('Test') {
