@@ -1,20 +1,28 @@
 pipeline {
     agent any
     stages {
-        stage('Installing prereqs') {
+        stage('Build') {
             steps {
-                echo 'Installing flask..'
-                sh("pip install flask")
+                sh 'echo "Building..."'
+                sh 'ls -al'
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                sh 'echo "Testing..."'
+                sh 'pwd'
+                sh 'touch testfile.txt'
+                sh 'ls -l'
             }
         }
+
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                sh 'cat ./deploy.sh'
+                sh 'echo "Deploying..."'
+                sh 'mv testfile.txt /tmp'
+                sh 'ls -l /tmp'
+
             }
         }
     }
